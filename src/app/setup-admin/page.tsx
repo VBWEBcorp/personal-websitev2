@@ -1,6 +1,6 @@
 'use client';
 
-import { createAdminAccount } from '@/lib/firebase';
+import { createAdminAccount } from '@/lib/firebase/auth';
 import { useEffect, useState } from 'react';
 
 export default function SetupAdmin() {

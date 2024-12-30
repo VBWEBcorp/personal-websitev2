@@ -37,8 +37,8 @@ async function createAdminUser() {
     console.log('Compte admin créé avec succès !');
     console.log('Email:', adminEmail);
     console.log('Mot de passe:', adminPassword);
-  } catch (error) {
-    console.error('Erreur lors de la création du compte admin:', error.message);
+  } catch (error: any) {
+    console.error('Erreur lors de la création du compte admin:', error?.message || 'Erreur inconnue');
   }
 }
 

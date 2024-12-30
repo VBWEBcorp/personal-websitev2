@@ -177,3 +177,20 @@ export async function createUser(email: string, password: string): Promise<UserP
 export function onAuthChange(callback: (user: User | null) => void) {
   return onAuthStateChanged(auth, callback);
 }
+
+// Create admin account
+export const createAdminAccount = async () => {
+  try {
+    const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
+    const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
+
+    if (!adminEmail || !adminPassword) {
+      return { success: false, error: 'Variables d\'environnement manquantes' };
+    }
+
+    await createUserWithEmailAndPassword(auth, adminEmail, adminPassword);
+    return { success: true };
+  } catch (error: any) {
+    return { success: false, error: error?.message || 'Erreur inconnue' };
+  }
+};
