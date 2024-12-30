@@ -1,29 +1,29 @@
 'use client';
 
-import './globals.css'
-import { Inter } from 'next/font/google'
-import { usePathname } from 'next/navigation'
-import Navigation from '@/components/Navigation'
-import Footer from '@/components/Footer'
+import './globals.css';
+import { Inter } from 'next/font/google';
 import { AuthProvider } from '@/context/AuthContext';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  const pathname = usePathname();
-  const isHomePage = pathname === '/';
-
   return (
     <html lang="fr">
+      <head>
+        <title>VBWeb - Développement Web</title>
+        <meta name="description" content="Développement web sur mesure et SEO" />
+      </head>
       <body className={inter.className}>
         <AuthProvider>
-          {!isHomePage && <Navigation />}
+          <Navigation />
           {children}
-          {!isHomePage && <Footer />}
+          <Footer />
         </AuthProvider>
       </body>
     </html>

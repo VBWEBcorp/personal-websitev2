@@ -14,7 +14,7 @@ export default function EspaceClientLayout({
 
   useEffect(() => {
     if (!loading && !user) {
-      router.push('/login'); // Assurez-vous d'avoir une page de login
+      return; // Ne pas rediriger, la page gère elle-même l'affichage du formulaire de connexion
     }
   }, [user, loading, router]);
 
@@ -24,10 +24,6 @@ export default function EspaceClientLayout({
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
       </div>
     );
-  }
-
-  if (!user) {
-    return null;
   }
 
   return <>{children}</>;
